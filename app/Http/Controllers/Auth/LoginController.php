@@ -32,11 +32,6 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-    }
-
     public function login(Request $request)
     {
     $this->validateLogin($request);
@@ -62,6 +57,21 @@ class LoginController extends Controller
         }
 
     return response()->json(['data' => 'User logged out.'], 200);
+    }
+
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        $errors = [ 'error' => trans('auth.failed') ];
+        return response()->json($errors, 422);
+    }
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest', ['except' => 'logout']);
     }
 }
 
