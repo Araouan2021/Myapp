@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Auth\AuthenticationException;
 
 class Handler extends ExceptionHandler
 {
@@ -45,7 +46,7 @@ class Handler extends ExceptionHandler
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)
-{
+    {
     // This will replace our 404 response with
     // a JSON response.
     if ($exception instanceof ModelNotFoundException &&
@@ -57,7 +58,7 @@ class Handler extends ExceptionHandler
     }
 
     return parent::render($request, $exception);
-
+    }
     /**
      * Convert an authentication exception into an unauthenticated response.
      *
