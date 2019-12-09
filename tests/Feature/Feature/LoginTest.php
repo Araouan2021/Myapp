@@ -8,7 +8,11 @@ use Tests\TestCase;
 
 class LoginTest extends TestCase
 {
-
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
     public function testRequiresEmailAndLogin()
     {
         $this->json('POST', 'api/login')
