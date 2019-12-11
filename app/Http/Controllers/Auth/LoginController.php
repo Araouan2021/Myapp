@@ -27,11 +27,7 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/home';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    
     public function login(Request $request)
     {
     $this->validateLogin($request);
@@ -46,6 +42,8 @@ class LoginController extends Controller
     }
 
     return $this->sendFailedLoginResponse($request);
+
+    }
 
     public function logout(Request $request)
     {
